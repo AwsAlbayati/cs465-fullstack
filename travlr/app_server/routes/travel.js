@@ -1,8 +1,10 @@
+// travel.js in controllers directory
 var express = require('express');
 var router = express.Router();
-const ctrlMain = require('../controllers/travel');
+console.log('')
+const controller = require('../controllers/travel');
 
-/* GET home page. */
-router.get('/', ctrlMain.travel);
+// Define route for GET request to /travel
+router.get('/', controller.travel);
 
 module.exports = router;
