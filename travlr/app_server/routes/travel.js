@@ -1,13 +1,10 @@
 // travel.js in controllers directory
-const express = require('express');
-const router = express.Router();
-
-// Controller function to handle rendering the travel page
-const travelController = function(req, res) {
-    res.render('travel', { title: 'Travel' });
-};
+var express = require('express');
+var router = express.Router();
+console.log('')
+const controller = require('../controllers/travel');
 
 // Define route for GET request to /travel
-router.get('/', travelController);
+router.get('/', controller.travel);
 
 module.exports = router;
