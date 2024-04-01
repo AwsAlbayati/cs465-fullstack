@@ -8,12 +8,25 @@ var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var travelRouter = require('./app_server/routes/travel');
 var handlebars = require('hbs');
+var fs = require('fs');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+var partialsDir = path.join(__dirname, 'app_server', 'views', 'partials');
+
+// Loop through partials directory and register each partial
+fs.readdirSync(partialsDir).forEach(function (file) {
+  var partialPath = path.join(partialsDir, file);
+  var partialName = file.split('.')[0]; // Remove file extension
+  var partial = fs.readFileSync(partialPath, 'utf8');
+  handlebars.registerPartial(partialName, partial);
+});
+
+
+
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'app_server', 'views'));
 
 app.use(logger('dev'));
 app.use(express.json());
