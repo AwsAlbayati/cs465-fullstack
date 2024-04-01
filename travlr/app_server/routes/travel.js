@@ -1,8 +1,13 @@
-var express = require('express');
-var router = express.Router();
-const ctrlMain = require('../controllers/travel');
+// travel.js in controllers directory
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', ctrlMain.travel);
+// Controller function to handle rendering the travel page
+const travelController = function(req, res) {
+    res.render('travel', { title: 'Travel' });
+};
+
+// Define route for GET request to /travel
+router.get('/', travelController);
 
 module.exports = router;
