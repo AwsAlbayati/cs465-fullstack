@@ -27,8 +27,7 @@ const tripsFindByCode = async(req, res) => {
 
 };
 
-
 module.exports ={
     tripList,
-    tripsFindByCode
+    tripsFindByCode,
 };
